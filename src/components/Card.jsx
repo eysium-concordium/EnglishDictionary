@@ -4,7 +4,7 @@ import './cardstyle.css'
 
 const Card = (props) => {
     
-    const { sourceUrl, meaningofWord, word, phonetic } = props.info;
+    const { sourceUrl, meaningofWord, word, phonetic, antonyms, synonyms  } = props.info;
     const audioUrl = props.info.audio;
 
 
@@ -35,6 +35,32 @@ const Card = (props) => {
                     </div>
                 }) : console.log("Fetching Meaning...")
             }
+
+        <div>
+                <h2 className='partofSpeech'> ANTONYMS:- </h2>
+                {antonyms && antonyms.length > 0 ? (
+                    <ul>
+                        {antonyms.map((ant, index) => (
+                            <li key={index}>{ant}</li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>No antonyms available</p>
+                )}
+            </div>
+
+            <div>
+                <h2 className='partofSpeech'> SYNONYMS :- </h2>
+                {synonyms && synonyms.length > 0 ? (
+                    <ul>
+                        {synonyms.map((syn, index) => (
+                            <li key={index}>{syn}</li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>No synonyms available</p>
+                )}
+            </div>      
 
             <div className='linkContainer'>
                 <a href={sourceUrl}>More Info</a>

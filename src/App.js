@@ -3,63 +3,82 @@ import './App.css';
 import Card from './components/Card';
 import Wel from './components/Wel';
 
-
 function App() {
-  const [searchVal, setsearchVal] = useState("welcome");
-  const [Wordinformation, setinformation] = useState([]);
-  const [welScreen, setwelScreen] = useState(true);
+  const [searchVal, setSearchVal] = useState("welcome");
+  const [wordInformation, setInformation] = useState(null);
+  const [welScreen, setWelScreen] = useState(true);
 
   const loadData = async () => {
     try {
-      const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchVal}`
+      const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchVal}`;
       const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch: ${response.status}`);
+      }
+
       const data = await response.json();
       const finalData = data[0];
 
-      // destructure
-
-
-      const sourceUrl = finalData.sourceUrls[0];
-      const meaningofWord = [];
-      for (let i = 0; i < finalData.meanings.length; i++) {
-        meaningofWord.push(finalData.meanings[i])
-      }
-      const {audio} = finalData.phonetics[1];
+      // Extract main details
+      const sourceUrl = finalData.sourceUrls?.[0] || "";
+      const meaningofWord = finalData.meanings || [];
       const { word, phonetic } = finalData;
 
-      const GatheredData = {
-        sourceUrl, word, phonetic, meaningofWord,audio
-      }
+      // Extract audio safely
+      const audio = finalData.phonetics.find(p => p.audio)?.audio || "";
 
-      setinformation(GatheredData);
+      // Collect antonyms and synonyms
+      let antonyms = [];
+      let synonyms = [];
 
+      meaningofWord.forEach((meaning) => {
+        if (meaning.antonyms) {
+          antonyms = antonyms.concat(meaning.antonyms);
+        }
+        if (meaning.synonyms) {
+          synonyms = synonyms.concat(meaning.synonyms);
+        }
+      });
 
+      // Remove duplicates & handle missing data
+      antonyms = antonyms.length ? [...new Set(antonyms)] : ["No antonyms available"];
+      synonyms = synonyms.length ? [...new Set(synonyms)] : ["No synonyms available"];
 
+      const gatheredData = { sourceUrl, word, phonetic, meaningofWord, audio, antonyms, synonyms };
+
+      setInformation(gatheredData);
     } catch (error) {
-      console.log(error);
-
+      console.error("Error fetching data:", error);
+      setInformation(null);
     }
-  }
+  };
 
-  const setWel = () => {
-    setwelScreen(false);
-  }
+  const handleWelcomeScreen = () => {
+    setWelScreen(false);
+  };
 
   useEffect(() => {
-    loadData()
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    loadData();
   }, []);
+
   return (
     <div className='mainContainer'>
-      <div className='searchBox'></div>
-      {
-        welScreen ? <Wel callfn={setWel} /> : <div><div className='searchBox'>
-          <input placeholder='Type a word..' value={searchVal} onChange={(e) => { setsearchVal(e.target.value) }}></input>
-          <button onClick={loadData}>Search</button>
-        </div> <Card info={Wordinformation} /></div>
-      }
-
+      {welScreen ? (
+        <Wel callfn={handleWelcomeScreen} />
+      ) : (
+        <div>
+          <div className='searchBox'>
+            <input
+              placeholder='Type a word..'
+              value={searchVal}
+              onChange={(e) => setSearchVal(e.target.value)}
+            />
+            <button onClick={loadData}>Search</button>
+          </div>
+          {wordInformation ? <Card info={wordInformation} /> : <p>Loading...</p>}
+        </div>
+      )}
     </div>
   );
 }
