@@ -1,8 +1,4 @@
-.mainContainer {
-  background-color: #231955;
-  color: #FFE5B4;
-  background-image: url(/public/diamond-upholstery.png);
-}
+
 
 p {
   font-weight: bold;
@@ -11,7 +7,6 @@ p {
 input {
   text-align: center;
   background: transparent;
-  color: white;
   border: none;
   font-weight: bolder;
   border-bottom: 2px solid #E8AA42;

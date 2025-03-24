@@ -10,7 +10,7 @@ const Card = (props) => {
 
 
     return (
-        <div className='cardContainer'>
+        <div className='cardContainer' style={{ color: props.mode === "dark" ? "white" : "black" }}>
             <h1 className='mainWord'>{word ? word.toUpperCase() : "Loading..."}</h1>
             <p>{phonetic}</p>
 
