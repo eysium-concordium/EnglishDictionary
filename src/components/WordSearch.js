@@ -203,6 +203,8 @@ const WordSearch = (props) => {
           <p><strong>📖 Meaning:</strong> {result.meaning}</p>
           <p><strong>🌍 Origin:</strong> {result.origin}</p>
           <p><strong>📜 Etymology:</strong> {result.etymology}</p>
+          <p><strong>🔄 Synonyms:</strong> {result.synonyms || "N/A"}</p>
+          <p><strong>🚫 Antonyms:</strong> {result.antonyms || "N/A"}</p>
 
           <button className="btn btn-warning mt-3 fw-bold" onClick={handleAddToFavorites}>⭐ Add to Favorites</button>
           <button className="btn btn-success mt-3 fw-bold ms-2" onClick={handleShare}>📤 Share</button>
