@@ -1,25 +1,12 @@
 import React, { useState, useEffect } from "react";
+import wordsData from "./wordsData"; // Importing the words data
 
 const WordOfTheDay = (props) => {
   const [wordData, setWordData] = useState(null);
 
-  // Dummy words (you can replace this with an API)
-  const wordsList = [
-    { word: "Happy", meaning: "Feeling or showing pleasure or contentment.", pronunciation: "/ˈhæpi/" },
-    { word: "Bright", meaning: "Giving off lots of light or intelligence.", pronunciation: "/braɪt/" },
-    { word: "Kind", meaning: "Being nice and considerate to others.", pronunciation: "/kaɪnd/" },
-    { word: "Fast", meaning: "Moving quickly.", pronunciation: "/fæst/" },
-    { word: "Cold", meaning: "Having a low temperature.", pronunciation: "/koʊld/" },
-    { word: "Soft", meaning: "Not hard or firm to the touch.", pronunciation: "/sɔːft/" },
-    { word: "Big", meaning: "Of considerable size or extent.", pronunciation: "/bɪg/" },
-    { word: "Small", meaning: "Not large in size or amount.", pronunciation: "/smɔːl/" },
-    { word: "Jump", meaning: "To push oneself off the ground into the air.", pronunciation: "/dʒʌmp/" },
-    { word: "Laugh", meaning: "To make sounds of amusement or happiness.", pronunciation: "/læf/" }
-  ];
-
   useEffect(() => {
-    // Select a random word from the list
-    const randomWord = wordsList[Math.floor(Math.random() * wordsList.length)];
+    // Select a random word from wordsData
+    const randomWord = wordsData[Math.floor(Math.random() * wordsData.length)];
     setWordData(randomWord);
   }, []);
 

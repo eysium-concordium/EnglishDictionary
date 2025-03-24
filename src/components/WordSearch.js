@@ -110,6 +110,30 @@ const WordSearch = (props) => {
     }
   };
 
+  const handleShare = () => {
+    if (!result || result.word === "Not Found") {
+      showAlert("No word to share!", "warning");
+      return;
+    }
+
+    const shareText = `📖 Word: ${result.word}
+📢 Pronunciation: ${result.pronunciation}
+📜 Meaning: ${result.meaning}
+🌍 Origin: ${result.origin}
+📜 Etymology: ${result.etymology}`;
+
+    if (navigator.share) {
+      navigator.share({
+        title: `Learn a new word: ${result.word}`,
+        text: shareText,
+      }).then(() => showAlert("Shared successfully!", "success"))
+        .catch(() => showAlert("Failed to share!", "danger"));
+    } else {
+      navigator.clipboard.writeText(shareText);
+      showAlert("Copied to clipboard!", "success");
+    }
+  };
+
   return (
     <div className="container mt-5 text-center">
       <h2 className="mb-4 fw-bold text-primary">🔍 Search for a Word</h2>
@@ -175,26 +199,13 @@ const WordSearch = (props) => {
         >
           <h2 className="fw-bold">{result.word}</h2>
           <hr style={{ borderTop: "2px solid rgba(255, 255, 255, 0.3)" }} />
-          <p><strong>📢 Pronunciation:</strong> <span style={{ fontStyle: "italic" }}>{result.pronunciation}</span></p>
+          <p><strong>📢 Pronunciation:</strong> {result.pronunciation}</p>
           <p><strong>📖 Meaning:</strong> {result.meaning}</p>
-          {result.example && <p><strong>📝 Example:</strong> <em>{result.example}</em></p>}
           <p><strong>🌍 Origin:</strong> {result.origin}</p>
           <p><strong>📜 Etymology:</strong> {result.etymology}</p>
 
-          {/* Favorite Button */}
-          {result.word !== "Not Found" && (
-            <button 
-              className="btn btn-warning mt-3 fw-bold"
-              onClick={handleAddToFavorites}
-              style={{
-                fontSize: "16px",
-                borderRadius: "10px",
-                padding: "8px 15px"
-              }}
-            >
-              ⭐ Add to Favorites
-            </button>
-          )}
+          <button className="btn btn-warning mt-3 fw-bold" onClick={handleAddToFavorites}>⭐ Add to Favorites</button>
+          <button className="btn btn-success mt-3 fw-bold ms-2" onClick={handleShare}>📤 Share</button>
         </div>
       )}
     </div>

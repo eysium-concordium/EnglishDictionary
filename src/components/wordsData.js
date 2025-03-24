@@ -78,6 +78,86 @@ const wordsData = [
     example: "His joke made everyone laugh.",
     origin: "Old English ‘hlæhhan’ meaning ‘to laugh’.",
     etymology: "Rooted in Proto-Germanic *hlahjan and Old Norse ‘hlæja’."
+  },
+  {
+    word: "Smart",
+    meaning: "Having intelligence or quick thinking.",
+    pronunciation: "/smɑːrt/",
+    example: "He is very smart in solving puzzles.",
+    origin: "Old English 'smeart', meaning ‘sharp, stinging’.",
+    etymology: "From Proto-Germanic *smartaz, originally meant ‘sharp pain’."
+  },
+  {
+    word: "Strong",
+    meaning: "Having great physical power or strength.",
+    pronunciation: "/strɔːŋ/",
+    example: "The weightlifter is very strong.",
+    origin: "Old English 'strang', meaning ‘powerful, severe’.",
+    etymology: "Derived from Proto-Germanic *strangaz."
+  },
+  {
+    word: "Quick",
+    meaning: "Happening fast or in a short time.",
+    pronunciation: "/kwɪk/",
+    example: "He gave a quick response.",
+    origin: "Old English 'cwic', meaning ‘alive, moving’.",
+    etymology: "Rooted in Proto-Germanic *kwikwaz, later evolving to mean ‘fast’."
+  },
+  {
+    word: "Brave",
+    meaning: "Showing courage in difficult situations.",
+    pronunciation: "/breɪv/",
+    example: "The firefighter was very brave.",
+    origin: "Middle French 'brave', meaning ‘courageous, valiant’.",
+    etymology: "Possibly from Latin 'barbarus', meaning ‘foreign, savage’."
+  },
+  {
+    word: "Lazy",
+    meaning: "Unwilling to work or use energy.",
+    pronunciation: "/ˈleɪ.zi/",
+    example: "He felt lazy on Sunday morning.",
+    origin: "Late 16th century, origin unknown.",
+    etymology: "Possibly from Middle Low German 'lasich', meaning ‘feeble, weak’."
+  },
+  {
+    word: "Funny",
+    meaning: "Causing laughter or amusement.",
+    pronunciation: "/ˈfʌn.i/",
+    example: "The comedian told a very funny joke.",
+    origin: "Late Middle English, from ‘fun’, meaning ‘trick, hoax’.",
+    etymology: "Developed from 18th-century English slang ‘fun’, later meaning ‘amusing’."
+  },
+  {
+    word: "Silent",
+    meaning: "Without sound or very quiet.",
+    pronunciation: "/ˈsaɪ.lənt/",
+    example: "The library was completely silent.",
+    origin: "Latin 'silentium', meaning ‘quiet, stillness’.",
+    etymology: "Derived from Latin 'silere', meaning ‘to be quiet’."
+  },
+  {
+    word: "Angry",
+    meaning: "Feeling or showing strong displeasure.",
+    pronunciation: "/ˈæŋ.ɡri/",
+    example: "He was very angry about the delay.",
+    origin: "Old Norse 'angr', meaning ‘grief, sorrow’.",
+    etymology: "Related to Proto-Germanic *angaz, meaning ‘narrow, tight’."
+  },
+  {
+    word: "Gentle",
+    meaning: "Kind, mild, or soft in nature.",
+    pronunciation: "/ˈdʒɛn.tl̩/",
+    example: "She had a gentle touch with the baby.",
+    origin: "Middle English, from Old French 'gentil', meaning ‘noble, courteous’.",
+    etymology: "From Latin 'gentilis', meaning ‘of the same family or race’."
+  },
+  {
+    word: "Beautiful",
+    meaning: "Pleasing to the eye or mind.",
+    pronunciation: "/ˈbjuː.tɪ.fəl/",
+    example: "The sunset was truly beautiful.",
+    origin: "Late Middle English, from 'beauty' + '-ful'.",
+    etymology: "Derived from Old French 'beaute', meaning ‘pleasing appearance’."
   }
 ];
 
